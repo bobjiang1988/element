@@ -140,10 +140,21 @@
         const currentNode = this.store.getCurrentNode();
         return currentNode ? currentNode.data : null;
       },
+      getCurrentTreeNode() {
+        return this.store.getCurrentNode() || null;
+      },
       getCurrentKey() {
         if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in getCurrentKey');
         const currentNode = this.getCurrentNode();
         return currentNode ? currentNode[this.nodeKey] : null;
+      },
+      expandCurrentNode() {
+        var currentNode = this.store.getCurrentNode();
+        return currentNode ? currentNode.expand() : false;
+      },
+      collapseCurrentNode() {
+        var currentNode = this.store.getCurrentNode();
+        return currentNode ? currentNode.collapse() : false;
       },
       setCheckedNodes(nodes, leafOnly) {
         if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in setCheckedNodes');

@@ -148,7 +148,7 @@
           if (item.__IS__FLAT__OPTIONS) isFlat = true;
 
           if (!item.disabled) {
-            if (item.children) {
+            if (item.children && item.children.length) {
               let triggerEvent = {
                 click: 'click',
                 hover: 'mouseenter'
@@ -173,7 +173,7 @@
             <li
               class={{
                 'el-cascader-menu__item': true,
-                'el-cascader-menu__item--extensible': item.children,
+                'el-cascader-menu__item--extensible': item.children && item.children.length,
                 'is-active': item.value === activeValue[menuIndex],
                 'is-disabled': item.disabled
               }}
