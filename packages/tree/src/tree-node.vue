@@ -28,7 +28,7 @@
       </span>
       <node-content :node="node"></node-content>
     </div>
-    <el-collapse-transition>
+    <el-collapse-transition @afterEnter="afterEnterCollapse" @afterLeave="afterLeaveCollapse">
       <div
         class="el-tree-node__children"
         v-if="childNodeRendered"
@@ -119,6 +119,14 @@
     },
 
     methods: {
+      afterLeaveCollapse() {
+        console.log('afterLeaveCollapse');
+      },
+
+      afterEnterCollapse() {
+        console.log('afterEnterCollapse');
+      },
+
       getNodeKey(node, index) {
         const nodeKey = this.tree.nodeKey;
         if (nodeKey && node) {

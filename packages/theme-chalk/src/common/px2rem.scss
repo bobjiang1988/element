@@ -1,0 +1,13 @@
+/* Font
+-------------------------- */
+$--font-path: 'fonts' !default;
+$--font-size-base: 12px;
+$--font-size-small: 10px;
+$--font-size-large: 16px;
+$--font-color-disabled-base: #bbb;
+$--font-weight-primary: 500;
+$--font-line-height-primary: 18px;
+
+@function px2rem($px) {
+    @return $px / $--font-size-base * 1rem;
+}

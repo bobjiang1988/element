@@ -156,6 +156,18 @@
         var currentNode = this.store.getCurrentNode();
         return currentNode ? currentNode.collapse() : false;
       },
+      expandByKeys(keys) {
+        let doExpand = false;
+        keys.forEach((key)=>{
+          const node = this.store.getNode(key);
+          if (node) {
+            doExpand = doExpand || !node.expanded;
+            node.expand(null, this.autoExpandParent);
+          }
+        });
+        this.$emit('node-expand');
+        return doExpand;
+      },
       setCheckedNodes(nodes, leafOnly) {
         if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in setCheckedNodes');
         this.store.setCheckedNodes(nodes, leafOnly);
